@@ -3,80 +3,79 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menu - Aura</title>
-  <meta name="description" content="Explore the diverse and delicious menu at Aura.">
+  <title>Menu | The Aura Collection</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
-    /* Category Tabs */
-    .menu-tabs {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-      flex-wrap: wrap;
-    }
-    .menu-tab {
-      background: none;
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
-      padding: 0.5rem 1.5rem;
-      border-radius: 30px;
-      cursor: pointer;
-      font-family: var(--font-body);
-      font-weight: 500;
-      transition: var(--transition);
-    }
-    .menu-tab:hover, .menu-tab.active {
-      background-color: var(--accent);
-      color: #000;
-      border-color: var(--accent);
-    }
+    #menuGrid { min-height: 400px; }
+    .price-tag { color: var(--primary); font-weight: 600; font-family: var(--font-serif); font-size: 1.2rem; }
   </style>
 </head>
 <body>
 
-  <nav>
-    <div class="container nav-container">
+  <!-- Navigation -->
+  <header id="mainHeader">
+    <nav>
       <div class="logo">AURA</div>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="menu.html" class="active">Menu</a></li>
-        <li><a href="reservation.html">Reservation</a></li>
-        <li><a href="reviews.html">Reviews</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="index.html">Experience</a></li>
+        <li><a href="menu.html" class="active">The Menu</a></li>
+        <li><a href="reservation.html">Reservations</a></li>
+        <li><a href="reviews.html">Guest Journal</a></li>
+        <li><a href="contact.html">Connect</a></li>
       </ul>
-      <button class="mobile-menu-btn">☰</button>
-    </div>
-  </nav>
-
-  <!-- Page Header -->
-  <header class="hero" style="height: 40vh; background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
-    <div class="container hero-content">
-      <h1 style="font-size: 3.5rem;">Our Menu</h1>
-    </div>
+      <div class="header-actions">
+         <a href="reservation.html" class="btn btn-primary" style="padding: 0.8rem 1.5rem; font-size: 0.7rem;">Book Now</a>
+      </div>
+    </nav>
   </header>
 
-  <section class="section container">
+  <!-- Hero Section -->
+  <section class="hero" style="height: 50vh;">
+    <img src="assets/images/signature.png" alt="Aura Menu" class="hero-video-bg" style="opacity: 0.3;">
+    <div class="hero-content">
+      <span class="section-tag">Taste the Art</span>
+      <h1 style="font-size: 4rem;">The Menu</h1>
+    </div>
+  </section>
+
+  <!-- Menu Content -->
+  <section class="container">
     <div class="menu-tabs" id="categoryTabs">
-      <button class="menu-tab active" data-category="All">All</button>
-      <button class="menu-tab" data-category="Starters">Starters</button>
-      <button class="menu-tab" data-category="Main Course">Main Course</button>
-      <button class="menu-tab" data-category="Desserts">Desserts</button>
-      <button class="menu-tab" data-category="Drinks">Drinks</button>
+      <button class="tab-btn active" data-category="All">Full Collection</button>
+      <button class="tab-btn" data-category="Starters">Starters</button>
+      <button class="tab-btn" data-category="Main Course">Main Course</button>
+      <button class="tab-btn" data-category="Desserts">Desserts</button>
+      <button class="tab-btn" data-category="Drinks">Elixirs</button>
     </div>
 
-    <div id="loader" class="text-center" style="padding: 2rem;"><p>Loading exquisite dishes...</p></div>
+    <div id="loader" style="text-align: center; padding: 2rem; color: var(--text-secondary); letter-spacing: 0.2rem; text-transform: uppercase; font-size: 0.8rem;">
+      Curating seasonal selection...
+    </div>
     
-    <div class="grid-3" id="menuGrid">
+    <div class="grid" id="menuGrid">
       <!-- Menu items injected via JS -->
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
-    <div class="container">
-      <div class="footer-bottom">
-        &copy; 2026 Aura Fine Dining. All rights reserved.
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="margin-bottom: 1.5rem;">AURA</div>
+        <p class="footer-text">The pinnacle of modern gastronomy. <br> Every visit is a new chapter.</p>
       </div>
+      <div>
+        <h4 class="footer-title">Visit Us</h4>
+        <p class="footer-text">123 Culinary Way <br> Gastronomy District, NY</p>
+      </div>
+      <div>
+        <h4 class="footer-title">Inquiries</h4>
+        <p class="footer-text">Follow us @aura_dining</p>
+        <p class="footer-text" style="margin-top: 1rem;">reservations@aura.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Aura Fine Dining. Crafted for Excellence.
     </div>
   </footer>
 
@@ -97,11 +96,11 @@
         renderMenu(allItems);
         loader.style.display = 'none';
       } catch (err) {
-        loader.innerHTML = `<p class="text-accent">Unable to load menu: ${err.message}</p>`;
+        loader.innerHTML = `<p style="color: #ff4d4d; letter-spacing: 0;">Error reaching the cellar: ${err.message}</p>`;
       }
 
       // Tab logic
-      const tabs = document.querySelectorAll('.menu-tab');
+      const tabs = document.querySelectorAll('.tab-btn');
       tabs.forEach(tab => {
         tab.addEventListener('click', (e) => {
           tabs.forEach(t => t.classList.remove('active'));
@@ -120,25 +119,37 @@
       function renderMenu(items) {
         menuGrid.innerHTML = '';
         if (items.length === 0) {
-          menuGrid.innerHTML = '<p class="text-muted" style="grid-column: 1/-1; text-align: center;">No items found in this category.</p>';
+          menuGrid.innerHTML = '<p class="footer-text" style="grid-column: 1/-1; text-align: center; padding: 4rem;">Our chefs are currently reimagining this category.</p>';
           return;
         }
 
         items.forEach(item => {
           const card = document.createElement('div');
           card.className = 'card';
+          card.style.padding = '0'; // Customizing for menu layout
           card.innerHTML = `
-            <img src="${item.imageUrl}" alt="${item.name}" class="card-img">
-            <div class="card-content">
-              <div class="card-header">
-                <h3 class="card-title">${item.name}</h3>
-                <span class="card-price">$${item.price.toFixed(2)}</span>
-              </div>
-              <p class="card-desc">${item.description}</p>
+            <div style="overflow: hidden; height: 250px;">
+               <img src="${item.imageUrl}" alt="${item.name}" style="margin-bottom: 0; height: 100%;">
+            </div>
+            <div style="padding: 2.5rem;">
+               <div style="display:flex; justify-content:space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                  <h3 style="margin-bottom: 0;">${item.name}</h3>
+                  <span class="price-tag">$${item.price}</span>
+               </div>
+               <p style="font-style: italic;">${item.description}</p>
             </div>
           `;
           menuGrid.appendChild(card);
         });
+      }
+    });
+
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
       }
     });
   </script>

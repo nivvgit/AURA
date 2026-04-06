@@ -3,90 +3,106 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reservations - Aura</title>
-  <meta name="description" content="Book your table at Aura.">
+  <title>Reservations | Aura Fine Dining</title>
   <link rel="stylesheet" href="css/style.css">
-  <style>
-    .reservation-box {
-      background-color: var(--bg-secondary);
-      padding: 3rem;
-      border-radius: 8px;
-      border: 1px solid var(--border-color);
-      max-width: 600px;
-      margin: 0 auto;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
-  </style>
 </head>
 <body>
 
-  <nav>
-    <div class="container nav-container">
+  <!-- Navigation -->
+  <header id="mainHeader">
+    <nav>
       <div class="logo">AURA</div>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="menu.html">Menu</a></li>
-        <li><a href="reservation.html" class="active">Reservation</a></li>
-        <li><a href="reviews.html">Reviews</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="index.html">Experience</a></li>
+        <li><a href="menu.html">The Menu</a></li>
+        <li><a href="reservation.html" class="active">Reservations</a></li>
+        <li><a href="reviews.html">Guest Journal</a></li>
+        <li><a href="contact.html">Connect</a></li>
       </ul>
-      <button class="mobile-menu-btn">☰</button>
-    </div>
-  </nav>
-
-  <!-- Page Header -->
-  <header class="hero" style="height: 40vh; background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1544148103-0773bf10d330?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
-    <div class="container hero-content">
-      <h1 style="font-size: 3.5rem;">Book a Table</h1>
-    </div>
+      <div class="header-actions">
+         <a href="reservation.html" class="btn btn-primary" style="padding: 0.8rem 1.5rem; font-size: 0.7rem;">Book Now</a>
+      </div>
+    </nav>
   </header>
 
-  <section class="section container">
-    <div class="reservation-box">
-      <div class="text-center">
-        <h2 class="section-title text-accent" style="font-size: 2rem;">Reserve Now</h2>
-        <p style="color: var(--text-muted); margin-bottom: 2rem;">Secure your spot for an unforgettable night.</p>
+  <!-- Page Header -->
+  <section class="hero" style="height: 50vh;">
+    <img src="assets/images/hero.png" alt="Aura Reservation" class="hero-video-bg" style="opacity: 0.3;">
+    <div class="hero-content">
+      <span class="section-tag">Secure Your Experience</span>
+      <h1 style="font-size: 4rem;">Reservations</h1>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="form-card">
+      <div style="text-align: center; margin-bottom: 4rem;">
+        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Book a Table</h2>
+        <p class="footer-text">Our tables are in high demand. We recommend booking 2-3 days in advance.</p>
       </div>
 
       <div id="alertBox"></div>
 
       <form id="resForm">
-        <div class="form-group">
-          <label class="form-label">Full Name</label>
-          <input type="text" class="form-control" name="name" required placeholder="John Doe">
+        <div class="input-group">
+          <label class="input-label">Full Name</label>
+          <input type="text" name="name" class="input-field" required placeholder="Johnathan Doe">
         </div>
-        <div class="form-group">
-          <label class="form-label">Email Address</label>
-          <input type="email" class="form-control" name="email" required placeholder="john@example.com">
+        <div class="grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 0;">
+           <div class="input-group">
+              <label class="input-label">Email Address</label>
+              <input type="email" name="email" class="input-field" required placeholder="john@aura.com">
+           </div>
+           <div class="input-group">
+              <label class="input-label">Phone Number</label>
+              <input type="tel" name="phone" class="input-field" required placeholder="+1 (555) 000-0000">
+           </div>
         </div>
-        <div class="form-group">
-          <label class="form-label">Phone Number</label>
-          <input type="tel" class="form-control" name="phone" required placeholder="+1 234 567 8900">
-        </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-          <div class="form-group">
-            <label class="form-label">Date</label>
-            <input type="date" class="form-control" name="date" required id="dateInput">
+        <div class="grid" style="grid-template-columns: 1fr 1fr 1fr; margin-bottom: 2rem;">
+          <div class="input-group">
+            <label class="input-label">Date</label>
+            <input type="date" name="date" class="input-field" required id="dateInput" style="color-scheme: dark;">
           </div>
-          <div class="form-group">
-            <label class="form-label">Time</label>
-            <input type="time" class="form-control" name="time" required>
+          <div class="input-group">
+            <label class="input-label">Time</label>
+            <input type="time" name="time" class="input-field" required style="color-scheme: dark;">
+          </div>
+          <div class="input-group">
+            <label class="input-label">Guests</label>
+            <select name="guests" class="input-field" style="background: transparent;">
+               <option value="1">1 Person</option>
+               <option value="2" selected>2 Persons</option>
+               <option value="3">3 Persons</option>
+               <option value="4">4 Persons</option>
+               <option value="5">5 Persons</option>
+               <option value="6">6+ Persons</option>
+            </select>
           </div>
         </div>
-        <div class="form-group">
-          <label class="form-label">Number of Guests</label>
-          <input type="number" class="form-control" name="guests" min="1" max="20" required value="2">
-        </div>
-        <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;" id="submitBtn">Confirm Reservation</button>
+        <button type="submit" class="btn btn-primary" style="width: 100%;" id="submitBtn">Request Reservation</button>
       </form>
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
-    <div class="container">
-      <div class="footer-bottom">
-        &copy; 2026 Aura Fine Dining. All rights reserved.
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="margin-bottom: 1.5rem;">AURA</div>
+        <p class="footer-text">The pinnacle of modern gastronomy. <br> Every visit is a new chapter.</p>
       </div>
+      <div>
+        <h4 class="footer-title">Policy</h4>
+        <p class="footer-text">Cancellations must be made 24 hours prior. Dress code: Semi-formal.</p>
+      </div>
+      <div>
+        <h4 class="footer-title">Hours</h4>
+        <p class="footer-text">Tue &mdash; Thu: 18:00 - 22:30</p>
+        <p class="footer-text">Fri &mdash; Sun: 17:30 - 23:30</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Aura Fine Dining. Crafted for Excellence.
     </div>
   </footer>
 
@@ -96,7 +112,6 @@
     import { showAlert } from './js/app.js';
 
     document.addEventListener('DOMContentLoaded', () => {
-      // Set min date to today
       const dateInput = document.getElementById('dateInput');
       const today = new Date().toISOString().split('T')[0];
       dateInput.setAttribute('min', today);
@@ -106,24 +121,33 @@
 
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        submitBtn.textContent = 'Booking...';
+        submitBtn.textContent = 'Curating your table...';
         submitBtn.disabled = true;
 
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
 
-        const response = await api.createReservation(data);
+        const { error, data: responseData } = await api.createReservation(data);
 
-        if (response.error) {
-          showAlert('alertBox', `Failed to book: ${response.error}`, 'error');
+        if (error) {
+          showAlert('alertBox', `Request failed: ${error}`, 'alert-error');
         } else {
-          showAlert('alertBox', 'Table reserved successfully! Check your email.', 'success');
+          showAlert('alertBox', 'Reservation request sent. We will confirm shortly via email.', 'alert-success');
           form.reset();
         }
 
-        submitBtn.textContent = 'Confirm Reservation';
+        submitBtn.textContent = 'Request Reservation';
         submitBtn.disabled = false;
       });
+    });
+
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
     });
   </script>
 </body>

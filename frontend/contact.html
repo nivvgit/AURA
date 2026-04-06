@@ -3,115 +3,110 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact - Aura</title>
-  <meta name="description" content="Get in touch with Aura.">
+  <title>Connect | Aura Fine Dining</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
-    .contact-info {
-      padding: 2rem;
-      background-color: var(--bg-secondary);
-      border-radius: 8px;
-    }
-    .info-item {
-      margin-bottom: 1.5rem;
-    }
-    .info-item strong {
-      display: block;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
+    .contact-info-card { background: var(--bg-elevated); border: 1px solid var(--glass-border); padding: 3rem; }
   </style>
 </head>
 <body>
 
-  <nav>
-    <div class="container nav-container">
+  <!-- Navigation -->
+  <header id="mainHeader">
+    <nav>
       <div class="logo">AURA</div>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="menu.html">Menu</a></li>
-        <li><a href="reservation.html">Reservation</a></li>
-        <li><a href="reviews.html">Reviews</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="index.html">Experience</a></li>
+        <li><a href="menu.html">The Menu</a></li>
+        <li><a href="reservation.html">Reservations</a></li>
+        <li><a href="reviews.html">Guest Journal</a></li>
+        <li><a href="contact.html" class="active">Connect</a></li>
       </ul>
-      <button class="mobile-menu-btn">☰</button>
-    </div>
-  </nav>
-
-  <!-- Page Header -->
-  <header class="hero" style="height: 40vh; background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1542385262-cea2c953fb7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
-    <div class="container hero-content">
-      <h1 style="font-size: 3.5rem;">Get in Touch</h1>
-    </div>
+      <div class="header-actions">
+         <a href="reservation.html" class="btn btn-primary" style="padding: 0.8rem 1.5rem; font-size: 0.7rem;">Book Now</a>
+      </div>
+    </nav>
   </header>
 
-  <section class="section container">
-    <div class="grid-2">
+  <!-- Page Header -->
+  <section class="hero" style="height: 50vh;">
+    <img src="assets/images/hero.png" alt="Aura Contact" class="hero-video-bg" style="opacity: 0.2;">
+    <div class="hero-content">
+      <span class="section-tag">A Direct Line to Excellence</span>
+      <h1 style="font-size: 4rem;">Get in Touch</h1>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="grid" style="grid-template-columns: 1.5fr 1fr; align-items: start; gap: 4rem;">
       
       <!-- Contact Form -->
-      <div>
-        <h2 class="section-title text-accent">Send a Message</h2>
-        <p style="color: var(--text-muted); margin-bottom: 2rem;">We would love to hear from you. For large group bookings or event inquiries, use the form below.</p>
+      <div class="form-card" style="margin: 0; width: 100%; padding: 4rem;">
+        <span class="section-tag">Inquiries</span>
+        <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Send a Message</h2>
+        <p class="footer-text" style="margin-bottom: 3rem;">Whether it's a private event, a special request, or simply a word of gratitude, we are here to listen.</p>
         
         <div id="alertBox"></div>
         
         <form id="contactForm">
-          <div class="form-group">
-            <label class="form-label">Name</label>
-            <input type="text" class="form-control" name="name" required>
+          <div class="input-group">
+            <label class="input-label">Your Name</label>
+            <input type="text" name="name" class="input-field" required placeholder="Johnathan Doe">
           </div>
-          <div class="form-group">
-            <label class="form-label">Email</label>
-            <input type="email" class="form-control" name="email" required>
+          <div class="input-group">
+            <label class="input-label">Email Address</label>
+            <input type="email" name="email" class="input-field" required placeholder="john@aura.com">
           </div>
-          <div class="form-group">
-            <label class="form-label">Message</label>
-            <textarea class="form-control" name="message" required></textarea>
+          <div class="input-group">
+            <label class="input-label">Message</label>
+            <textarea name="message" class="input-field" required rows="4" placeholder="Your inquiry..."></textarea>
           </div>
-          <button type="submit" class="btn" id="submitBtn">Send Message</button>
+          <button type="submit" class="btn btn-primary" style="width: 100%;" id="submitBtn">Deliver Message</button>
         </form>
       </div>
 
-      <!-- Contact Info & Map -->
-      <div>
-        <div class="contact-info" style="margin-bottom: 2rem;">
-          <h3 style="margin-bottom: 2rem;">Contact Information</h3>
-          <div class="info-item">
-            <strong>Address</strong>
-            <span>123 Gourmet Avenue, Culinary District, NY 10001</span>
-          </div>
-          <div class="info-item">
-            <strong>Phone</strong>
-            <span>+1 (555) 123-4567</span>
-          </div>
-          <div class="info-item">
-            <strong>Email</strong>
-            <span>reservations@aurafinedining.com</span>
-          </div>
-        </div>
+      <!-- Contact Info -->
+      <div class="contact-info-card">
+         <span class="section-tag">Foundations</span>
+         <h3 style="margin-bottom: 2.5rem; font-size: 2rem;">Information</h3>
+         
+         <div style="margin-bottom: 3rem;">
+           <span class="input-label">Address</span>
+           <p class="footer-text" style="font-size: 1.1rem; color: #fff;">123 Culinary Way <br> Gastronomy District, NY 10001</p>
+         </div>
 
-        <!-- Google Maps Embed -->
-        <div style="border-radius: 8px; overflow: hidden; border: 1px solid var(--border-color);">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m2!1m1!1m1!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
-            width="100%" 
-            height="300" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
-        </div>
+         <div style="margin-bottom: 3rem;">
+           <span class="input-label">Inquiries</span>
+           <p class="footer-text" style="font-size: 1.1rem; color: #fff;">+1 (555) 123-4567 <br> reservations@aura.com</p>
+         </div>
+
+         <div>
+           <span class="input-label">Socials</span>
+           <p class="footer-text" style="font-size: 1.1rem; color: var(--primary);">Instagram / Twitter / Facebook</p>
+         </div>
       </div>
       
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
-    <div class="container">
-      <div class="footer-bottom">
-        &copy; 2026 Aura Fine Dining. All rights reserved.
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="margin-bottom: 1.5rem;">AURA</div>
+        <p class="footer-text">The pinnacle of modern gastronomy. <br> Every visit is a new chapter.</p>
       </div>
+      <div>
+        <h4 class="footer-title">Visit Us</h4>
+        <p class="footer-text">123 Culinary Way <br> Gastronomy District, NY</p>
+      </div>
+      <div>
+        <h4 class="footer-title">Refinement</h4>
+        <p class="footer-text">"Excellence is not an act, but a habit."</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Aura Fine Dining. Crafted for Excellence.
     </div>
   </footer>
 
@@ -126,22 +121,33 @@
 
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
+        submitBtn.textContent = 'Delivering...';
         submitBtn.disabled = true;
 
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
 
-        const response = await api.submitContact(data);
+        const { error } = await api.submitContact(data);
 
-        if (response.error) {
-          showAlert('alertBox', response.error, 'error');
+        if (error) {
+          showAlert('alertBox', `Failed to deliver: ${error}`, 'alert-error');
         } else {
-          showAlert('alertBox', 'Message sent successfully!', 'success');
+          showAlert('alertBox', 'Your message has been delivered to our maître d\'.', 'alert-success');
           form.reset();
         }
 
+        submitBtn.textContent = 'Deliver Message';
         submitBtn.disabled = false;
       });
+    });
+
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
     });
   </script>
 </body>

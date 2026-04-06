@@ -1,7 +1,7 @@
-// Shared UI functionality
+// Shared Aura UI functionality
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Mobile Menu Toggle
+  // Mobile Menu Toggle (if applicable)
   const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
   const navLinks = document.querySelector('.nav-links');
 
@@ -21,37 +21,47 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Sticky navbar with blur background (scrolling effect if needed)
-  window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 50) {
-      nav.style.backgroundColor = 'rgba(10, 10, 10, 0.98)';
-      nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.5)';
-    } else {
-      nav.style.backgroundColor = 'rgba(10, 10, 10, 0.9)';
-      nav.style.boxShadow = 'none';
-    }
-  });
+  // Global Scroll Listener for Header
+  const mainHeader = document.getElementById('mainHeader');
+  if (mainHeader) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        mainHeader.classList.add('scrolled');
+      } else {
+        mainHeader.classList.remove('scrolled');
+      }
+    });
 
-  // Check login status for conditional nav links
+    // Initial check in case page starts scrolled
+    if (window.scrollY > 100) mainHeader.classList.add('scrolled');
+  }
+
+  // Admin visibility
   const token = localStorage.getItem('adminToken');
-  const adminLinks = document.querySelectorAll('.admin-only');
-  adminLinks.forEach(link => {
-    if (token) {
-      link.style.display = 'block';
-    } else {
-      link.style.display = 'none';
-    }
+  const adminOnly = document.querySelectorAll('.admin-only');
+  adminOnly.forEach(el => {
+    el.style.display = token ? 'block' : 'none';
   });
 });
 
-export const showAlert = (containerId, message, type = 'success') => {
+/**
+ * Enhanced alerting system for Aura
+ * @param {string} containerId - Element ID to inject alert
+ * @param {string} message - Content
+ * @param {string} type - 'alert-success' or 'alert-error'
+ */
+export const showAlert = (containerId, message, type = 'alert-success') => {
   const container = document.getElementById(containerId);
   if (!container) return;
   
   container.innerHTML = `<div class="alert ${type}">${message}</div>`;
   
+  // Smoothly clear after 6s
   setTimeout(() => {
-    container.innerHTML = '';
-  }, 5000);
+    if (container.firstElementChild) {
+       container.firstElementChild.style.opacity = '0';
+       container.firstElementChild.style.transform = 'translateY(-10px)';
+       setTimeout(() => { container.innerHTML = ''; }, 400);
+    }
+  }, 6000);
 };

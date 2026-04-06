@@ -3,90 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reviews - Aura</title>
-  <meta name="description" content="See what our customers are saying about Aura.">
+  <title>Guest Journal | Aura Fine Dining</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
-    .star-rating {
-      color: var(--accent);
-      font-size: 1.2rem;
-    }
-    .review-card {
-      background-color: var(--bg-secondary);
-      padding: 2rem;
-      border-radius: 8px;
-      border-left: 4px solid var(--accent);
-      margin-bottom: 2rem;
-    }
+    .star-rating { color: var(--primary); font-size: 1rem; margin-bottom: 1.5rem; letter-spacing: 2px; }
+    .review-card { text-align: left; position: relative; }
+    .review-card::before { content: '“'; position: absolute; top: 1rem; right: 2rem; font-family: var(--font-serif); font-size: 4rem; color: var(--glass-border); line-height: 1; }
   </style>
 </head>
 <body>
 
-  <nav>
-    <div class="container nav-container">
+  <!-- Navigation -->
+  <header id="mainHeader">
+    <nav>
       <div class="logo">AURA</div>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="menu.html">Menu</a></li>
-        <li><a href="reservation.html">Reservation</a></li>
-        <li><a href="reviews.html" class="active">Reviews</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="index.html">Experience</a></li>
+        <li><a href="menu.html">The Menu</a></li>
+        <li><a href="reservation.html">Reservations</a></li>
+        <li><a href="reviews.html" class="active">Guest Journal</a></li>
+        <li><a href="contact.html">Connect</a></li>
       </ul>
-      <button class="mobile-menu-btn">☰</button>
-    </div>
-  </nav>
-
-  <!-- Page Header -->
-  <header class="hero" style="height: 40vh; background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
-    <div class="container hero-content">
-      <h1 style="font-size: 3.5rem;">Guest Experiences</h1>
-    </div>
+      <div class="header-actions">
+         <a href="reservation.html" class="btn btn-primary" style="padding: 0.8rem 1.5rem; font-size: 0.7rem;">Book Now</a>
+      </div>
+    </nav>
   </header>
 
-  <section class="section container">
-    <div class="grid-2">
-      <!-- Reviews List -->
-      <div>
-        <h2 class="section-title text-accent">Recent Reviews</h2>
-        <div id="reviewsList">
-          <p>Loading reviews...</p>
-        </div>
-      </div>
-
-      <!-- Submit Review Form -->
-      <div style="background-color: var(--bg-secondary); padding: 2rem; border-radius: 8px;">
-        <h3 class="text-accent" style="margin-bottom: 1.5rem;">Leave a Review</h3>
-        <div id="alertBox"></div>
-        <form id="reviewForm">
-          <div class="form-group">
-            <label class="form-label">Your Name</label>
-            <input type="text" class="form-control" name="author" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Rating</label>
-            <select class="form-control" name="rating" required>
-              <option value="5">⭐⭐⭐⭐⭐ (5/5)</option>
-              <option value="4">⭐⭐⭐⭐ (4/5)</option>
-              <option value="3">⭐⭐⭐ (3/5)</option>
-              <option value="2">⭐⭐ (2/5)</option>
-              <option value="1">⭐ (1/5)</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Review</label>
-            <textarea class="form-control" name="comment" required></textarea>
-          </div>
-          <button type="submit" class="btn" id="submitBtn">Submit Review</button>
-        </form>
-      </div>
+  <!-- Page Header -->
+  <section class="hero" style="height: 50vh;">
+    <img src="assets/images/hero.png" alt="Aura Reviews" class="hero-video-bg" style="opacity: 0.25;">
+    <div class="hero-content">
+      <span class="section-tag">Voices of Excellence</span>
+      <h1 style="font-size: 4rem;">Guest Journal</h1>
     </div>
   </section>
 
-  <footer>
-    <div class="container">
-      <div class="footer-bottom">
-        &copy; 2026 Aura Fine Dining. All rights reserved.
+  <section class="container">
+    <div class="grid" id="reviewsGrid">
+      <!-- Reviews injected via JS -->
+      <div id="reviewLoader" style="grid-column: 1/-1; text-align: center; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.2rem; font-size: 0.8rem; padding: 4rem 0;">
+        Recalling memories...
       </div>
+    </div>
+
+    <!-- Review Submission Form -->
+    <div class="form-card" style="margin-top: 8rem;">
+      <div style="text-align: center; margin-bottom: 4rem;">
+         <span class="section-tag">Your Thoughts</span>
+         <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Sign the Journal</h2>
+         <p class="footer-text">We value your reflections on your experience with us.</p>
+      </div>
+
+      <div id="alertBox"></div>
+      
+      <form id="reviewForm">
+        <div class="input-group">
+          <label class="input-label">Full Name</label>
+          <input type="text" name="author" class="input-field" required placeholder="Johnathan Doe">
+        </div>
+        <div class="grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 0;">
+           <div class="input-group">
+              <label class="input-label">Rating</label>
+              <select name="rating" class="input-field" style="background: transparent;">
+                 <option value="5">5 Stars - Exceptional</option>
+                 <option value="4">4 Stars - Elegant</option>
+                 <option value="3">3 Stars - Pleasing</option>
+                 <option value="2">2 Stars - Improvement Needed</option>
+                 <option value="1">1 Star - Disappointing</option>
+              </select>
+           </div>
+           <div class="input-group">
+              <label class="input-label">Subject</label>
+              <input type="text" class="input-field" placeholder="E.g. A Night to Remember">
+           </div>
+        </div>
+        <div class="input-group">
+          <label class="input-label">Reflection</label>
+          <textarea name="comment" class="input-field" required rows="4" placeholder="Share your experience..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;" id="submitBtn">Submit to Journal</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="margin-bottom: 1.5rem;">AURA</div>
+        <p class="footer-text">The pinnacle of modern gastronomy. <br> Every visit is a new chapter.</p>
+      </div>
+      <div>
+        <h4 class="footer-title">Visit Us</h4>
+        <p class="footer-text">123 Culinary Way <br> Gastronomy District, NY</p>
+      </div>
+      <div>
+        <h4 class="footer-title">Reflections</h4>
+        <p class="footer-text">"Where flavor meets the soul."</p>
+        <p class="footer-text" style="margin-top: 1rem;">reviews@aura.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Aura Fine Dining. Crafted for Excellence.
     </div>
   </footer>
 
@@ -96,39 +115,45 @@
     import { showAlert } from './js/app.js';
 
     document.addEventListener('DOMContentLoaded', async () => {
-      const reviewsList = document.getElementById('reviewsList');
+      const reviewsGrid = document.getElementById('reviewsGrid');
+      const loader = document.getElementById('reviewLoader');
+      
+      // Load Reviews
+      try {
+        const { error, data } = await api.getReviews();
+        if (error) throw new Error(error);
+        
+        loader.style.display = 'none';
+
+        if (data.length === 0) {
+          reviewsGrid.innerHTML = '<p class="footer-text" style="grid-column: 1/-1; text-align: center; padding: 4rem;">The journal is empty. Be the first to grace its pages.</p>';
+        } else {
+          data.forEach(review => {
+            const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+            const card = document.createElement('div');
+            card.className = 'card review-card';
+            card.innerHTML = `
+              <div class="star-rating">${stars}</div>
+              <p style="margin-bottom: 2rem; font-style: italic; font-size: 1.1rem; line-height: 1.8;">"${review.comment}"</p>
+              <div style="display: flex; align-items: center; gap: 1rem;">
+                 <div style="width: 40px; height: 1px; background: var(--primary);"></div>
+                 <strong style="color: var(--primary); letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.8rem;">${review.author}</strong>
+              </div>
+            `;
+            reviewsGrid.appendChild(card);
+          });
+        }
+      } catch (err) {
+        loader.innerHTML = `<p style="color: #ff4d4d; letter-spacing: 0;">The memories seem faded: ${err.message}</p>`;
+      }
+
+      // Submit Review
       const form = document.getElementById('reviewForm');
       const submitBtn = document.getElementById('submitBtn');
 
-      const fetchReviews = async () => {
-        try {
-          const { error, data } = await api.getReviews();
-          if (error) throw new Error(error);
-
-          if (data.length === 0) {
-            reviewsList.innerHTML = '<p class="text-muted">No reviews yet. Be the first!</p>';
-            return;
-          }
-
-          reviewsList.innerHTML = data.map(r => `
-            <div class="review-card">
-              <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
-                <strong>${r.author}</strong>
-                <span class="star-rating">${'⭐'.repeat(r.rating)}</span>
-              </div>
-              <p style="color: var(--text-muted); font-style: italic;">"${r.comment}"</p>
-              <small style="color: #666; display: block; margin-top: 1rem;">${new Date(r.createdAt).toLocaleDateString()}</small>
-            </div>
-          `).join('');
-        } catch (err) {
-          reviewsList.innerHTML = `<p class="text-accent">Failed to load reviews.</p>`;
-        }
-      };
-
-      await fetchReviews();
-
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
+        submitBtn.textContent = 'Recording your thought...';
         submitBtn.disabled = true;
 
         const formData = new FormData(form);
@@ -138,18 +163,28 @@
           comment: formData.get('comment')
         };
 
-        const response = await api.submitReview(data);
+        const { error } = await api.submitReview(data);
 
-        if (response.error) {
-          showAlert('alertBox', response.error, 'error');
+        if (error) {
+          showAlert('alertBox', `Failed to record: ${error}`, 'alert-error');
         } else {
-          showAlert('alertBox', 'Review submitted successfully!', 'success');
+          showAlert('alertBox', 'Your reflection has been added to our journal.', 'alert-success');
           form.reset();
-          await fetchReviews();
+          // Optionally reload reviews here
         }
 
+        submitBtn.textContent = 'Submit to Journal';
         submitBtn.disabled = false;
       });
+    });
+
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
     });
   </script>
 </body>

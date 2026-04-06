@@ -1,45 +1,28 @@
 const express = require('express');
 const router = express.Router();
-const Menu = require('../models/Menu');
+const supabase = require('../config/supabaseClient');
 const auth = require('../middleware/auth');
 
 // Get all menu items
 router.get('/', async (req, res) => {
-  try {
-    const items = await Menu.find();
-    res.json(items);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
+  const { data, error } = await supabase.from('menus').select('*');
+  if (error) return res.status(500).json({ message: error.message });
+  res.json(data);
 });
 
 // Add new menu item (Admin only)
 router.post('/', auth, async (req, res) => {
-  const item = new Menu({
-    name: req.body.name,
-    description: req.body.description,
-    price: req.body.price,
-    category: req.body.category,
-    imageUrl: req.body.imageUrl
-  });
-
-  try {
-    const newItem = await item.save();
-    res.status(201).json(newItem);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
+  const { name, description, price, category, imageUrl } = req.body;
+  const { data, error } = await supabase.from('menus').insert([{ name, description, price, category, imageUrl }]).select();
+  if (error) return res.status(400).json({ message: error.message });
+  res.status(201).json(data[0]);
 });
 
 // Delete menu item (Admin only)
 router.delete('/:id', auth, async (req, res) => {
-  try {
-    const item = await Menu.findByIdAndDelete(req.params.id);
-    if (!item) return res.status(404).json({ message: 'Item not found' });
-    res.json({ message: 'Item deleted' });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
+  const { error } = await supabase.from('menus').delete().eq('id', req.params.id);
+  if (error) return res.status(500).json({ message: error.message });
+  res.json({ message: 'Item deleted' });
 });
 
 module.exports = router;
