@@ -48,8 +48,8 @@ CREATE TABLE IF NOT EXISTS public.contacts (
 );
 
 -- 5. Insert Dummy Data for Menu to start off
-INSERT INTO public.menus (name, description, price, category) VALUES
-('Bruschetta', 'Toasted bread topped with fresh tomatoes', 8.50, 'Starters'),
-('Steak Frites', 'Grilled flank steak with french fries', 24.00, 'Main Course'),
-('Tiramisu', 'Classic Italian dessert', 9.00, 'Desserts'),
-('Mojito', 'Refreshing rum cocktail', 12.00, 'Drinks');
+INSERT INTO public.menus (name, description, price, category, imageUrl) VALUES
+('Bruschetta', 'Toasted bread topped with fresh tomatoes', 8.50, 'Starters', '/assets/images/menu/bruschetta.png'),
+('Steak Frites', 'Grilled flank steak with french fries', 24.00, 'Main Course', '/assets/images/menu/steak_frites.png'),
+('Tiramisu', 'Classic Italian dessert', 9.00, 'Desserts', '/assets/images/menu/tiramisu.png'),
+('Mojito', 'Refreshing rum cocktail', 12.00, 'Drinks', '/assets/images/menu/mojito.png');
